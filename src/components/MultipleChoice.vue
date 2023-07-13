@@ -4,7 +4,7 @@ import Choice from './Choice.vue'
 
 const props = defineProps<{ 
     label: string, 
-    choices: Array<{label: string, points: number, active: boolean}>
+    choices: Array<{title: string, text: string, url: string, points: number, active: boolean}>
     locked: boolean
 }>()
 
@@ -46,8 +46,10 @@ if (props.locked) {
   >{{ label }}</h2>
   <Choice
     v-for="c in choices"
-    :key="c.label"
-    :label="c.label"
+    :key="c.title"
+    :title="c.title"
+    :text="c.text"
+    :url="c.url"
     :points="c.points"
     :active="c.active"
     @update:active="locked ? updateChoiceActiveLocked(c, $event) : updateChoiceActive(c, $event)"
