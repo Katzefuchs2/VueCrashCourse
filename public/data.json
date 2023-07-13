@@ -1,0 +1,37 @@
+{
+    "choices": [
+      {
+        "label": "Choice 1",
+        "points": -1,
+        "active": false
+      },
+      {
+        "label": "Choice 2",
+        "points": 2,
+        "active": false
+      },
+      {
+        "label": "Choice 3",
+        "points": 0,
+        "active": false
+      }
+    ],
+    "choicesLocked": [
+      {
+        "label": "Bad",
+        "points": 0,
+        "active": false
+      },
+      {
+        "label": "Worse",
+        "points": -1,
+        "active": false
+      },
+      {
+        "label": "Worst",
+        "points": -2,
+        "active": false
+      }
+    ]
+}
+  

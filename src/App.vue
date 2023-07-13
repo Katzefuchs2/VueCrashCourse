@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref} from 'vue'
+import {ref, onMounted} from 'vue'
 import MultipleChoiceLocked from './components/MultipleChoiceLocked.vue';
 import PointsUI from './components/PointsUI.vue'
 import MultipleChoice from './components/MultipleChoice.vue'
@@ -7,6 +7,7 @@ import MultipleChoice from './components/MultipleChoice.vue'
 const startPoints = 10;
 let currentPoints = startPoints;
 
+/*
 const choices = ref([
   {
     label: "Choice 1",
@@ -24,7 +25,6 @@ const choices = ref([
     active: false
   }
 ])
-
 const choicesLocked = ref([
   {
     label: "Bad",
@@ -42,6 +42,10 @@ const choicesLocked = ref([
     active: false
   }
 ])
+*/
+
+const choices = ref<Array<{ label: string, points: number, active: boolean }>>([]);
+const choicesLocked = ref<Array<{ label: string, points: number, active: boolean }>>([]);
 
 /*const checkPoints = computed(() => {
   currentPoints = startPoints;
@@ -55,7 +59,6 @@ const choicesLocked = ref([
 function calculatePoints(): number {
   let points = startPoints;
   const allChoices = [...choices.value, ...choicesLocked.value]
-  console.log(allChoices);
   for (let i = 0; i < allChoices.length; i++) {
     if (allChoices[i].active) {
       points += allChoices[i].points;
@@ -65,29 +68,42 @@ function calculatePoints(): number {
 }
 
 function handleMultipleChoiceChange(): void {
-  console.log("handleMultipleChoiceChange")
   currentPoints = calculatePoints();
 }
+
+onMounted(async () => {
+  try {
+    // Fetch choices from JSON file
+    const response = await fetch('data.json');
+    const data = await response.json();
+    //console.log("Hello " + data.name);
+    // Assign fetched choices to the ref variables
+    choices.value = data.choices;
+    choicesLocked.value = data.choicesLocked;
+  } catch (error) {
+    console.error('Error loading choices:', error);
+  }
+});
 
 </script>
 
 <template>
 
   <MultipleChoice 
+    v-if = "choices.length > 0"
     label="Free Group" 
     :choices="choices" 
     @change="handleMultipleChoiceChange"
   />
 
   <MultipleChoiceLocked 
+    v-if = "choices.length > 0"
     label="Locked Group" 
     :choices="choicesLocked" 
     @change="handleMultipleChoiceChange"
   />
 
   <PointsUI :points="calculatePoints()" />
-
-  <button @click="console.log(choices[0].active)">DEBUG</button>
   
 </template>
 
