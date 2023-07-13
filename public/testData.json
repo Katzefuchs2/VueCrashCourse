@@ -1,0 +1,40 @@
+{
+	"group1": {
+		"title": "Free Group",
+		"locked": false,
+		"choices": [{
+				"title": "Choice 1",
+				"text": "",
+				"url": "https://pawzlove-media.s3.us-east-2.amazonaws.com/images/urlscan/21709/urlscan_image/0a52f09935dfab6d4351b339162ec47f.jpg",
+				"points": 0,
+				"active": false
+			},
+			{
+				"title": "Choice 2",
+				"text": "",
+				"url": "https://pawzlove-media.s3.us-east-2.amazonaws.com/images/urlscan/21709/urlscan_image/0a52f09935dfab6d4351b339162ec47f.jpg",
+				"points": 1,
+				"active": false
+			}
+		]
+	},
+    "group2": {
+		"title": "Locked Group",
+		"locked": true,
+		"choices": [{
+				"title": "Choice 1",
+				"text": "",
+				"url": "https://pawzlove-media.s3.us-east-2.amazonaws.com/images/urlscan/21709/urlscan_image/0a52f09935dfab6d4351b339162ec47f.jpg",
+				"points": 0,
+				"active": false
+			},
+			{
+				"title": "Choice 2",
+				"text": "",
+				"url": "https://pawzlove-media.s3.us-east-2.amazonaws.com/images/urlscan/21709/urlscan_image/0a52f09935dfab6d4351b339162ec47f.jpg",
+				"points": 1,
+				"active": false
+			}
+		]
+	}
+}

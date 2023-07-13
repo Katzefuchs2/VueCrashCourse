@@ -2,9 +2,10 @@
 
 import Choice from './Choice.vue'
 
-defineProps<{ 
+const props = defineProps<{ 
     label: string, 
     choices: Array<{label: string, points: number, active: boolean}>
+    locked: boolean
 }>()
 
 const emits = defineEmits(['update:active', 'change']);
@@ -15,11 +16,31 @@ const updateChoiceActive = (choice: { active: boolean }, newValue: boolean) => {
   emits('update:active', newValue);
   emits('change'); // Emit the "change" event
 };
+
+const updateChoiceActiveLocked = (choice: { active: boolean }, newValue: boolean) => {
+    props.choices[0].active = true;
+    if (newValue) {
+        // Deactivate all other choices
+        for (const otherChoice of props.choices) {
+            if (otherChoice !== choice) {
+                otherChoice.active = false;
+            }
+        }
+    } else if (choice === props.choices[0]) {
+        newValue = true;
+    }
+  choice.active = newValue;
+  emits('update:active', newValue);
+  emits('change'); // Emit the "change" event
+};
+if (props.locked) {
+    props.choices[0].active = true;
+}
 </script>
 
 <template>
 
-<div class="FreeChoiceGroup">
+<div class="ChoiceGroup">
   <h2 
     style=""
   >{{ label }}</h2>
@@ -29,7 +50,9 @@ const updateChoiceActive = (choice: { active: boolean }, newValue: boolean) => {
     :label="c.label"
     :points="c.points"
     :active="c.active"
-    @update:active="updateChoiceActive(c, $event)"
+    @update:active="locked ? updateChoiceActiveLocked(c, $event) : updateChoiceActive(c, $event)"
+      
+    
   />
 </div>
 
@@ -37,7 +60,7 @@ const updateChoiceActive = (choice: { active: boolean }, newValue: boolean) => {
 </template>
 
 <style scoped>
-.FreeChoiceGroup {
+.ChoiceGroup {
   display: flex;
   flex-direction: column;
   justify-content: center;

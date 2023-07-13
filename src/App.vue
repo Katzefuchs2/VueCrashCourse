@@ -1,64 +1,30 @@
 <script setup lang="ts">
 import {ref, onMounted} from 'vue'
-import MultipleChoiceLocked from './components/MultipleChoiceLocked.vue';
 import PointsUI from './components/PointsUI.vue'
 import MultipleChoice from './components/MultipleChoice.vue'
 
 const startPoints = 10;
 let currentPoints = startPoints;
 
-/*
-const choices = ref([
-  {
-    label: "Choice 1",
-    points: -1,
-    active: false
-  },
-  {
-    label: "Choice 2 efsfsdfsdfsd",
-    points: 2,
-    active: false
-  },
-  {
-    label: "Choice 3",
-    points: 0,
-    active: false
-  }
-])
-const choicesLocked = ref([
-  {
-    label: "Bad",
-    points: 0,
-    active: false
-  },
-  {
-    label: "Worse",
-    points: -1,
-    active: false
-  },
-  {
-    label: "Worst",
-    points: -2,
-    active: false
-  }
-])
-*/
+interface Choice {
+  title: string;
+  text: string;
+  url: string;
+  points: number;
+  active: boolean;
+}
 
-const choices = ref<Array<{ label: string, points: number, active: boolean }>>([]);
-const choicesLocked = ref<Array<{ label: string, points: number, active: boolean }>>([]);
+interface Group {
+  title: string;
+  locked: boolean;
+  choices: Choice[];
+}
 
-/*const checkPoints = computed(() => {
-  currentPoints = startPoints;
-  for (let i = 0; i < choices.value.length; i++) {
-    if (choices.value[i].active) {
-      currentPoints += choices.value[i].points;
-    }
-  }
-})*/
+const groups = ref<Group[]>([]);
 
 function calculatePoints(): number {
   let points = startPoints;
-  const allChoices = [...choices.value, ...choicesLocked.value]
+  const allChoices = groups.value.flatMap(group => group.choices);
   for (let i = 0; i < allChoices.length; i++) {
     if (allChoices[i].active) {
       points += allChoices[i].points;
@@ -73,13 +39,11 @@ function handleMultipleChoiceChange(): void {
 
 onMounted(async () => {
   try {
-    // Fetch choices from JSON file
-    const response = await fetch('data.json');
+    const response = await fetch('testData.json');
     const data = await response.json();
-    //console.log("Hello " + data.name);
-    // Assign fetched choices to the ref variables
-    choices.value = data.choices;
-    choicesLocked.value = data.choicesLocked;
+    
+    groups.value = Object.values(data);
+    console.log("Hello " + groups.value[0].title);
   } catch (error) {
     console.error('Error loading choices:', error);
   }
@@ -88,20 +52,14 @@ onMounted(async () => {
 </script>
 
 <template>
-
-  <MultipleChoice 
-    v-if = "choices.length > 0"
-    label="Free Group" 
-    :choices="choices" 
-    @change="handleMultipleChoiceChange"
-  />
-
-  <MultipleChoiceLocked 
-    v-if = "choices.length > 0"
-    label="Locked Group" 
-    :choices="choicesLocked" 
-    @change="handleMultipleChoiceChange"
-  />
+  
+<MultipleChoice
+  v-for="group in groups"
+  :label="group.title"
+  :choices="group.choices"
+  :locked="group.locked"
+  @change="handleMultipleChoiceChange"
+/>
 
   <PointsUI :points="calculatePoints()" />
   
