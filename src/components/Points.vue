@@ -2,7 +2,19 @@
 
 defineProps<{ 
     points: number
+    
 }>()
+
+/*function calculatePoints(): number {
+  let points = 10;
+  const allChoices = groups.value.flatMap(group => group.choices);
+  for (let i = 0; i < allChoices.length; i++) {
+    if (allChoices[i].active) {
+      points += allChoices[i].points;
+    }
+  }
+  return points;
+}*/
 
 </script>
 

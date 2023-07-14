@@ -1,11 +1,10 @@
 <script setup lang="ts">
-
 //defineEmits(['update:active'])
 const props = defineProps<{ 
     title: string
     text: string
     url: string
-    points: number
+    points: Array<number>
     active: boolean
 }>()
 const emits = defineEmits(['update:active']);
@@ -14,7 +13,8 @@ const toggleCheckbox = () => {
   emits('update:active', !props.active);
 };
 
-console.log(props.url);
+console.log("Length " +props.points.length);
+
 </script>
 
 <template>
@@ -42,36 +42,24 @@ console.log(props.url);
         <p>{{ text }}</p>
     </div>
     
-    <span class="Number"
-    :style="{
-            color: 
-                points == 0 ? 'grey' :
-                points < 0 ? 'red' : 'lime'
-        }"
-    > {{ points }} </span>
+    <div class="Number">
+        <span v-for="point in points">
+            <span
+                v-if="point !== 0"
+            >
+                [{{ point }}]
+            </span>
+        </span>
+        
+    </div>
+
+    
 </div>
 
 
 </template>
 
 <style scoped>
-.Choice {
-    display: inline;
-
-   
-    background-color: #070c33;
-    margin-top: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    width : 100%;
-    text-align: left;
-}
-
-.Cost {
-    position: relative;
-    font-weight: 1000;
-    text-align: right;
-}
 
 input[type=checkbox] {
     transform: scale(1.5);
@@ -90,8 +78,8 @@ input[type=checkbox] {
 }
 
 .Image {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 5%;
     margin-right: 10px;
 }

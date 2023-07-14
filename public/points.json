@@ -1,0 +1,14 @@
+{
+    "hp": {
+        "start": 100,
+        "hide": false
+    },
+    "gold": {
+        "start": 0,
+        "hide": false
+    },
+    "karma": {
+        "start": 0,
+        "hide": true
+    }
+}

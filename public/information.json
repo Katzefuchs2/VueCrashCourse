@@ -1,0 +1,10 @@
+{
+    "intro": {
+        "title": "Welcome to the game!",
+        "text": "This is a game about a guy who is trying to get to the end of the game. He"
+    },
+    "backstory": {
+        "title": "Backstory",
+        "text": "This is the backstory of the game. It is a very long story, so I will not"
+    }
+}

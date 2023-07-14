@@ -4,7 +4,7 @@ import Choice from './Choice.vue'
 
 const props = defineProps<{ 
     label: string, 
-    choices: Array<{title: string, text: string, url: string, points: number, active: boolean}>
+    choices: Array<{title: string, text: string, url: string, points: number[], active: boolean}>
     locked: boolean
 }>()
 

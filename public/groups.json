@@ -6,21 +6,21 @@
 				"title": "Choice 1",
 				"text": "d awkd kwa kw bkwab wd  dwa",
 				"url": "https://pawzlove-media.s3.us-east-2.amazonaws.com/images/urlscan/21709/urlscan_image/0a52f09935dfab6d4351b339162ec47f.jpg",
-				"points": 0,
+				"points": [1,0,0],
 				"active": false
 			},
 			{
 				"title": "Choice 2",
 				"text": "awd wa w dawdwjhsfsjdvf sjdf vsjfvsdfv sfvhwada daw awd aw dwad wad d aw dw awd awd aw dsdv h fhsvf hsf vadawdd  awd wda awd aw",
 				"url": "https://news.artnet.com/app/news-upload/2019/01/Cat-Photog-Feat-256x256.jpg",
-				"points": -1,
+				"points": [1,1,1],
 				"active": false
 			},
 			{
 				"title": "Choice 3",
 				"text": "awd wa w dawdwjhsfsjdvf sjdf vsjfvsdfv sfvhwada daw awd aw dwad wad d aw dw awd awd aw dsdv h fhsvf hsf vadawdd  awd wda awd aw",
 				"url": "https://news.artnet.com/app/news-upload/2019/01/Cat-Photog-Feat-256x256.jpg",
-				"points": -2,
+				"points": [1,1,1],
 				"active": false
 			}
 		]
@@ -32,28 +32,28 @@
 				"title": "Choice 1",
 				"text": "aw dwa wadwa d aw ",
 				"url": "https://pbs.twimg.com/profile_images/737359467742912512/t_pzvyZZ_400x400.jpg",
-				"points": 0,
+				"points": [1,1,1],
 				"active": false
 			},
 			{
 				"title": "Choice 2",
 				"text": "awd wa d awdawdawd awd awd aw d",
 				"url": "https://i.pinimg.com/originals/72/5b/36/725b367798f30c2d374c87bc130d036e.jpg",
-				"points": 1,
+				"points": [1,1,1],
 				"active": false
 			},
 			{
 				"title": "Choice 3",
 				"text": "awd wa d awdawdawd awd awd aw d",
 				"url": "https://i.pinimg.com/originals/72/5b/36/725b367798f30c2d374c87bc130d036e.jpg",
-				"points": 2,
+				"points": [1,1,1],
 				"active": false
 			},
 			{
 				"title": "Choice 4",
 				"text": "awd wa d awdawdawd awd awd aw d",
 				"url": "https://i.pinimg.com/originals/72/5b/36/725b367798f30c2d374c87bc130d036e.jpg",
-				"points": 3,
+				"points": [1,1,1],
 				"active": false
 			}
 		]
