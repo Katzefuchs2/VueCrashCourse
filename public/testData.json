@@ -11,9 +11,16 @@
 			},
 			{
 				"title": "Choice 2",
-				"text": "awd wa w dawdwadawdd  awd wda awd aw",
+				"text": "awd wa w dawdwjhsfsjdvf sjdf vsjfvsdfv sfvhwada daw awd aw dwad wad d aw dw awd awd aw dsdv h fhsvf hsf vadawdd  awd wda awd aw",
 				"url": "https://news.artnet.com/app/news-upload/2019/01/Cat-Photog-Feat-256x256.jpg",
-				"points": 1,
+				"points": -1,
+				"active": false
+			},
+			{
+				"title": "Choice 3",
+				"text": "awd wa w dawdwjhsfsjdvf sjdf vsjfvsdfv sfvhwada daw awd aw dwad wad d aw dw awd awd aw dsdv h fhsvf hsf vadawdd  awd wda awd aw",
+				"url": "https://news.artnet.com/app/news-upload/2019/01/Cat-Photog-Feat-256x256.jpg",
+				"points": -2,
 				"active": false
 			}
 		]
@@ -33,6 +40,20 @@
 				"text": "awd wa d awdawdawd awd awd aw d",
 				"url": "https://i.pinimg.com/originals/72/5b/36/725b367798f30c2d374c87bc130d036e.jpg",
 				"points": 1,
+				"active": false
+			},
+			{
+				"title": "Choice 3",
+				"text": "awd wa d awdawdawd awd awd aw d",
+				"url": "https://i.pinimg.com/originals/72/5b/36/725b367798f30c2d374c87bc130d036e.jpg",
+				"points": 2,
+				"active": false
+			},
+			{
+				"title": "Choice 4",
+				"text": "awd wa d awdawdawd awd awd aw d",
+				"url": "https://i.pinimg.com/originals/72/5b/36/725b367798f30c2d374c87bc130d036e.jpg",
+				"points": 3,
 				"active": false
 			}
 		]

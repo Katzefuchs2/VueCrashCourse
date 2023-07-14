@@ -5,6 +5,7 @@ import MultipleChoice from './components/MultipleChoice.vue'
 
 const startPoints = 10;
 let currentPoints = startPoints;
+console.log(currentPoints);
 
 interface Choice {
   title: string;
@@ -60,9 +61,9 @@ onMounted(async () => {
   :locked="group.locked"
   @change="handleMultipleChoiceChange"
 />
-
+  <br><br>
   <PointsUI :points="calculatePoints()" />
-  
+
 </template>
 
 <style scoped>

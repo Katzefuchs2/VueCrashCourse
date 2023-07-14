@@ -25,5 +25,6 @@ defineProps<{
     width: 100%;
     height: 50px;
     font-weight: 1000;
+    margin-top: 0.5rem; 
 }
 </style>
