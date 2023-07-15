@@ -1,5 +1,15 @@
 <script setup lang="ts">
 //defineEmits(['update:active'])
+import { onMounted, ref} from 'vue';
+
+interface Point {
+    start: number
+    hide: boolean
+    color: string
+}
+
+const pointData = ref<Point[]>([]);
+
 const props = defineProps<{ 
     title: string
     text: string
@@ -13,7 +23,19 @@ const toggleCheckbox = () => {
   emits('update:active', !props.active);
 };
 
-console.log("Length " +props.points.length);
+//console.log("Length " +props.points.length);
+
+onMounted(async () => {
+  try {
+    const response = await fetch('points.json');
+    const data = await response.json();
+    pointData.value = Object.values(data);
+
+    console.log("Length " + pointData.value.length);
+  } catch (error) {
+    console.error('Error loading points:', error);
+  }
+});
 
 </script>
 
@@ -42,10 +64,11 @@ console.log("Length " +props.points.length);
         <p>{{ text }}</p>
     </div>
     
-    <div class="Number">
-        <span v-for="point in points">
+    <div class="Number" v-if="pointData.length > 0">
+        <span v-for="(point, index) in points">
             <span
-                v-if="point !== 0"
+                v-if="point !== 0 && pointData[index].hide !== true"
+                :style="{ color: pointData[index].color }"
             >
                 [{{ point }}]
             </span>

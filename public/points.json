@@ -1,14 +1,17 @@
 {
     "hp": {
         "start": 100,
-        "hide": false
+        "hide": false,
+        "color": "#ff0000"
     },
     "gold": {
         "start": 0,
-        "hide": false
+        "hide": false,
+        "color": "#FFD700"
     },
     "karma": {
         "start": 0,
-        "hide": true
+        "hide": true,
+        "color": "#00ff00"
     }
 }

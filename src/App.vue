@@ -93,7 +93,7 @@ onMounted(async () => {
   v-for= "node in nodes"
   :myKey="node.key"
 />
-<button class="EndGame">END GAME</button>
+<button class="EndGame">Done</button>
 <br><br><br><br>
 <Points 
   :points="calculatePoints()" 
