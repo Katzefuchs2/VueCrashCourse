@@ -32,8 +32,6 @@ const toggleCheckbox = () => {
         }
         
     }
-    
-    s
     store.points = sum;
 };
 

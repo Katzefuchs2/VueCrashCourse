@@ -8,8 +8,6 @@ const props = defineProps<{
     myKey: string
 }>()
 
-const emits = defineEmits(['change']);
-
 let type = 0;
 let index = 0;
 
@@ -74,10 +72,6 @@ onMounted(async () => {
   }
 });
 
-function handleMultipleChoiceChange(): void {
-  emits('change')
-  //currentPoints = calculatePoints();
-}
 
 </script>
 
@@ -88,7 +82,6 @@ function handleMultipleChoiceChange(): void {
         :label="groups[index].title"
         :choices="groups[index].choices"
         :locked="groups[index].locked"
-        @change="handleMultipleChoiceChange"
     />
     <InformationBox
         v-if="type === 1"
@@ -99,7 +92,6 @@ function handleMultipleChoiceChange(): void {
         v-if="type === 2"
         :url="images[index].url"
     />
-  
 </template>
 
 <style scoped>

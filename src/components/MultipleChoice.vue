@@ -8,13 +8,8 @@ const props = defineProps<{
     locked: boolean
 }>()
 
-const emits = defineEmits(['update:active', 'change']);
-
-// Function to update the active state of a choice
 const updateChoiceActive = (choice: { active: boolean }, newValue: boolean) => {
   choice.active = newValue;
-  emits('update:active', newValue);
-  emits('change'); // Emit the "change" event
 };
 
 const updateChoiceActiveLocked = (choice: { active: boolean }, newValue: boolean) => {
@@ -30,8 +25,7 @@ const updateChoiceActiveLocked = (choice: { active: boolean }, newValue: boolean
         newValue = true;
     }
   choice.active = newValue;
-  emits('update:active', newValue);
-  emits('change'); // Emit the "change" event
+
 };
 if (props.locked) {
     props.choices[0].active = true;
@@ -53,8 +47,6 @@ if (props.locked) {
     :points="c.points"
     :active="c.active"
     @update:active="locked ? updateChoiceActiveLocked(c, $event) : updateChoiceActive(c, $event)"
-      
-    
   />
 </div>
 
