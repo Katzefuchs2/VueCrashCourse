@@ -1,13 +1,14 @@
 <script setup lang="ts">
 //defineEmits(['update:active'])
 import { onMounted, ref} from 'vue';
-
+import { useStore } from '../store';
 interface Point {
+    name: string
     start: number
     hide: boolean
     color: string
 }
-
+const store = useStore();
 const pointData = ref<Point[]>([]);
 
 const props = defineProps<{ 
@@ -20,7 +21,20 @@ const props = defineProps<{
 const emits = defineEmits(['update:active']);
 
 const toggleCheckbox = () => {
-  emits('update:active', !props.active);
+    emits('update:active', !props.active);
+    
+    let sum = [];
+    for(var i = 0; i < store.points.length; i++){
+        if (props.active) {
+            sum.push(store.points[i] + props.points[i]);
+        } else {
+            sum.push(store.points[i] - props.points[i]);
+        }
+        
+    }
+    
+    s
+    store.points = sum;
 };
 
 //console.log("Length " +props.points.length);

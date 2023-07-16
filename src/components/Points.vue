@@ -1,27 +1,47 @@
 <script setup lang="ts">
+import { useStore } from '../store';
+import { ref, onMounted, computed } from 'vue';
 
-defineProps<{ 
-    points: number
+
+interface Point {
+    name: string
+    start: number
+    hide: boolean
+    color: string
+}
+const pData = ref<Point[]>([]);
+
+const store = useStore();
+const points = ref(store.points);
+
+
+onMounted(async () => {
+  try {
+
+    const pointsResponse = await fetch('points.json');
+    const pointsJSON = await pointsResponse.json();
+    pData.value = Object.values(pointsJSON);
     
-}>()
-
-/*function calculatePoints(): number {
-  let points = 10;
-  const allChoices = groups.value.flatMap(group => group.choices);
-  for (let i = 0; i < allChoices.length; i++) {
-    if (allChoices[i].active) {
-      points += allChoices[i].points;
+    for (let i = 0; i < pData.value.length; i++) {
+        points.value.push(pData.value[i].start);
     }
+    store.points = points.value;
+  } catch (error) {
+    console.error('Error loading choices:', error);
   }
-  return points;
-}*/
+});
 
+const computedPoints = computed(() => {
+    return store.points;
+});
 </script>
 
 <template>
 
 <div class="PUI">
-    <p>{{ points }}</p>
+    <span
+    v-for="v in computedPoints"
+    >{{ v }}</span>
 </div>
 
 

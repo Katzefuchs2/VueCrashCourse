@@ -4,11 +4,10 @@ import Points from './components/Points.vue'
 /*import MultipleChoice from './components/MultipleChoice.vue'
 import InformationBox from './components/InformationBox.vue'
 import ImageComponent from './components/ImageComponent.vue'*/
-import Node from './components/Node.vue'
+import NodeComponent from './components/Node.vue'
 
-const startPoints = 10;
-let currentPoints = startPoints;
-console.log(currentPoints);
+import { provideStore } from './store';
+provideStore();
 
 
 interface Choice {
@@ -29,22 +28,36 @@ interface Node {
   key: string;
 }
 
+//const points = ref<number[]>([1,1,1]);
+ // ref<Group[]>([]);
+
 const groups = ref<Group[]>([]);
 const nodes = ref<Node[]>([]);
 
-function calculatePoints(): number {
-  let points = startPoints;
+/*function calculatePoints(index: number): number {
+  let p = startPoints;
   const allChoices = groups.value.flatMap(group => group.choices);
   for (let i = 0; i < allChoices.length; i++) {
     if (allChoices[i].active) {
-      points += allChoices[i].points[0];
+      p += allChoices[i].points[index];
     }
   }
-  return points;
+  return p;
 }
 
-/*function handleMultipleChoiceChange(): void {
-  currentPoints = calculatePoints();
+function getPoints(): Array<number> {
+  console.log(points);
+  return points.value;
+}
+
+function handleMultipleChoiceChange(): void {
+  console.log("AH HA");
+  for (let i = 0; i < points.value.length; i++) {
+    //points[i] = calculatePoints(i);
+    points.value[i] = points.value[i];
+  }
+    
+  
 }*/
 
 onMounted(async () => {
@@ -57,11 +70,10 @@ onMounted(async () => {
     const nodesData = await nodesResponse.json();
     nodes.value = Object.values(nodesData);
     
+    //const pointsResponse = await fetch('points.json');
+    //const pointsData = await pointsResponse.json();
+    //points.value = Object.values(pointsData);
 
-
-    /*console.log(Object.keys(data)[0]);
-    console.log(data.find((group: { title: string; }) => group.title === "Group1"));
-    */
     console.log(nodes.value[0].key);
   } catch (error) {
     console.error('Error loading choices:', error);
@@ -89,15 +101,13 @@ onMounted(async () => {
   text=""
 /> -->
 
-<Node 
+<NodeComponent 
   v-for= "node in nodes"
   :myKey="node.key"
 />
 <button class="EndGame">Done</button>
 <br><br><br><br>
-<Points 
-  :points="calculatePoints()" 
-/>
+<Points/>
 
 </template>
 

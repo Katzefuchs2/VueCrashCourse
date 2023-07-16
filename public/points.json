@@ -1,15 +1,18 @@
 {
     "hp": {
+        "name": "HP",
         "start": 100,
         "hide": false,
         "color": "#ff0000"
     },
     "gold": {
+        "name": "Gold",
         "start": 0,
         "hide": false,
         "color": "#FFD700"
     },
     "karma": {
+        "name": "Karma",
         "start": 0,
         "hide": true,
         "color": "#00ff00"

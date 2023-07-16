@@ -8,7 +8,7 @@ const props = defineProps<{
     myKey: string
 }>()
 
-console.log("NODE " + props.myKey);
+const emits = defineEmits(['change']);
 
 let type = 0;
 let index = 0;
@@ -75,6 +75,7 @@ onMounted(async () => {
 });
 
 function handleMultipleChoiceChange(): void {
+  emits('change')
   //currentPoints = calculatePoints();
 }
 
